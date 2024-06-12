@@ -1,4 +1,6 @@
-# Quickstart using Fork (20240612; Tested on MacOS M2 Max)
+# Quickstart using Fork
+
+Tested on MacOS M2 Max on 20240612
 
 ```
 # Build 
@@ -9,7 +11,8 @@ docker run -it -v ${PWD}:/tmp nougat bash
 cd /tmp/examples
 nougat btt146.pdf -o .
 
-# After converting at least 1 file, if you want to tag a version with the model downloaded
+# After converting at least 1 file
+# If you want to tag a version with the model downloaded
 docker commit FIXME_COMMIT cannin/nougat:0.1.0-small
 ```
 
