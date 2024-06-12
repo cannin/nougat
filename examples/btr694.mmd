@@ -1,0 +1,36 @@
+[MISSING_PAGE_FAIL:1]
+
+These messages can be filtered to show only errors, only warnings, or both, using a drop-down menu. Users also have an option to select a specific rule group for validation. Using right-click options, users can ignore particular messages or types of messages. Currently, the plugin supports the MIM notation through a Schematron ruleset. We also provide a ruleset with rules used for the curation of diagrams on the WikiPathways database ([http://wikipathways.org](http://wikipathways.org)), a repository for biological pathway diagrams. SBGN support for PathVisio is currently in development as a separate project. Validation support of SBGN diagrams is expected through this plugin when that project is completed.
+
+_Schematron and Groovy ruleset support_: the plugin supports rulesets written either in Schematron or Groovy; tutorials are provided on the project website.
+
+Schematron ([http://www.schematron.com](http://www.schematron.com)) is an XML validation language that uses XSL Transformations (XSLT). The result of validation is a simple XML formatted report using the Schematron Validation Report Language. This validation report is parsed and error or warning messages for the current diagram are displayed in the 'Validator' tab as shown in Figure 1. Schematron rulesets are reusable and can facilitate the addition of validation support in other software projects where an XSLT processor is available. For instance, the ruleset provided for MIM was originally described for use as part of an automated command-line pipeline (Luna _et al._, 2011a). More information on the process used with the Schematron rulesetsets is on the project website.
+
+Groovy ([http://groovy.codehaus.org](http://groovy.codehaus.org)) is a scripting language with syntax similar to Java. Creating rulesets in Groovy is easy for users with a basic understanding of Java. Groovy rules are basically a collection of methods with specific signature for them to be recognized as valid rules. These are run directly against the internal memory representation of the diagram in PathVisio, producing results, which are then parsed and displayed on the plugin's panel. Validation against a Groovy ruleset, consumes less time than its Schematron counterpart, since it does not require any XSLT to take place. However, the downside to this approach is that the Groovy rules are tied to the internal workings of PathVisio. An example rule checking for unattached lines in pathway diagrams is provided in the Supplementary Material in both Schematron and Groovy.
+
+_Support for validation based on rule groups_: validation rules in rulesets may be put into groups. Thus, a user can validate a diagram with all the rules in a ruleset or only those under a specific group, thereby making it more selective. Schematron supports rule groups using the 'phase' XML tag with one or more 'active' rules as child XML nodes. Groovy supports rule groups through a specific method that defines rule groups and their associated rules.
+
+## 3 Conclusion
+
+The PathVisio-Validator plugin has been developed to enhance the quality of pathways created in PathVisio by assisting biologists in drawing pathways according to specific graphical notations. Validation of this nature allows researchers to be more confident that their diagrams will not be ambiguous to readers. The extensible nature of the rulesets should allow it to adapt to preferences of PathVisio users, and the support for different ruleset formats (i.e. Schematron and Groovy) should allow users to create rulesets based on their priorities. Moreover, this plugin will also encourage the users of PathVisio, especially the beginners to create pathways based on specific notations, such as MIM, helping to promote the adoption of such standards. In the future, we plan to integrate this validation framework into WikiPathways to provide automated diagram validation (Pico _et al._, 2008), so that all uploaded/updated pathways are validated against common rules. Presented here is a narrow use case of the validation of graphical notations, but the ideas presented here can be extended to other biological standards written in XML-based formats. These ideas are of use in the wider standards community in providing validation support in multiple programming languages.
+
+## 4 Acknowledgements
+
+We thank the PathVisio community, Thomas Kelder and Margot Sunshine for their useful feedback, and Alexander Pico for coordinating the Google Summer of Code project.
+
+_Funding_: Google Summer of Code program, Intramural Research Program of the National Institutes of Health, Center for Cancer Research, National Cancer Institute; Netherlands Consortium for Systems Biology (NCSB), which is part of the Netherlands Genomics Initiative/Netherlands Organization for Scientific Research, in part.
+
+_Conflict of Interest_: none declared.
+
+## References
+
+* [1] Beltrame, L. _et al._ (2011) The Biological Connection Markup Language: a SBSON-compliant format for visualization, filtering and analysis of biological pathways. _Bioinformatics_, **27**, 2127-2133.
+* [2] Czanderna,T. _et al._ (2010) Editing, validating and translating of SBGN maps. _Bioinformatics_, **26**, 2340-2341.
+* [3] Demir,E. _et al._ (2010) The BiPoX community standard for pathway data sharing. _Nature Biotechnology_, **28**, 935-942.
+* [4] Hucka,M. _et al._ (2003) The systems biology markup language (SBML): a medium for representation and exchange of biochemical network models. _Bioinformatics_, **19**, 524-531.
+* [5] Luna,A. _et al._ (2011a) A formal MIM specification and tools for the common exchange of MIM diagrams in XML-based format, an API, and a validation method. _BMC Bioinformatics_, **12**, 167.
+* [6] Luna,A. _et al._ (2011b) PathVisio-MIM: PathVisio plugin for creating and editing Molecular Interaction Maps (MIMsIDs). _Bioinformatics_, **27**, 2165-2166.
+* [7] Pico,A.R. _et al._ (2008) WikiPathways: pathway editing for the people. _PLoS Biol_, **6**, 4.
+* [8] van Iersel,M.P. _et al._ (2008) Presenting and exploring biological pathways with PathVisio. _BMC Bioinformatics_, **9**, 399.
+
+Figure 1: A pathway diagram being validated using the PathVisio-Validator plugin.

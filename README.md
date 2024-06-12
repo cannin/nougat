@@ -1,3 +1,20 @@
+# Quickstart using Fork (20240612; Tested on MacOS M2 Max)
+
+```
+# Build 
+docker build -t nougat --progress=plain .
+
+# Run
+docker run -it -v ${PWD}:/tmp nougat bash
+cd /tmp/examples
+nougat btt146.pdf -o .
+
+# After converting at least 1 file, if you want to tag a version with the model downloaded
+docker commit FIXME_COMMIT cannin/nougat:0.1.0-small
+```
+
+
+
 <div align="center">
 <h1>Nougat: Neural Optical Understanding for Academic Documents</h1>
 

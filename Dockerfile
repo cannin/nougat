@@ -9,14 +9,16 @@ RUN apt-get -y install python3-pip git
 RUN pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 # replace CUDA version to your CUDA version.
 
-RUN mkdir workspace
-WORKDIR /workspace
+RUN pip3 install fastapi uvicorn[standard]
 
-RUN pip3 install fastapi uvicorn[standard] fsspec[http]==2023.1.0
-RUN git clone https://github.com/facebookresearch/nougat.git
-WORKDIR /workspace/nougat
+# load current files in 
+ADD . /nougat
+#RUN ls -lah /nougat
+WORKDIR /nougat
 
 RUN python3 setup.py install
+
+WORKDIR /
 
 EXPOSE 8503
 
