@@ -1,4 +1,4 @@
-# Quickstart using Fork
+# Quickstart using Docker and Forked Code
 
 Tested on MacOS M2 Max on 20240612
 
